@@ -1,0 +1,24 @@
+SELECT * FROM [dbo].[tblGender];
+SELECT * FROM [dbo].[tblPerson];
+
+INSERT INTO tblGender VALUES(3,'UNKNOWN');
+
+UPDATE tblPerson SET GenderId = 2 WHERE ID = 2;
+UPDATE tblGender SET Gender = 'Unknown' WHERE ID = 3;
+
+INSERT INTO tblPerson VALUES(3,'Simon','s@s.com',1);
+INSERT INTO tblPerson VALUES(4,'Sam','sam@sam.com',1);
+INSERT INTO tblPerson VALUES(5,'May','may@may.com',2);
+INSERT INTO tblPerson VALUES(6,'Kenny','k@k.com',3);
+
+INSERT INTO tblPerson(ID, Name, Email) VALUES(7,'Rich','r@r.com');
+INSERT INTO tblPerson(ID, Name, Email) VALUES(8,'Mike','mike@r.com');
+INSERT INTO tblPerson(ID, Name, Email,GenderId) VALUES(9,'Sara','s@r.com',1);
+INSERT INTO tblPerson(ID, Name, Email,GenderId) VALUES(10,'Johnny','j@r.com',NULL);
+
+ALTER TABLE tblPerson 
+ADD CONSTRAINT df_tblPerson_GenderId
+DEFAULT 3 FOR GenderId;
+
+ALTER TABLE tblPerson 
+DROP CONSTRAINT df_tblPerson_GenderId;
